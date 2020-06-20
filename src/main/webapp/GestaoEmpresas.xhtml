@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<meta charset="UTF-8" />
+	<title>Gestão Empresas</title>
+
+	<h:outputStylesheet library="aewinformatica" name="estilo.css" />
+
+</h:head>
+
+<h:body>
+	<header>
+		<h:graphicImage library="aewinformatica" name="logo.png" />
+	</header>
+
+	<div id="conteudo">
+		<h:form id="formulario">
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Razão social: " for="razaoSocial" />
+				<h:panelGroup>
+					<p:inputText id="razaoSocial"
+						value="#{gestaoEmpresasBean.empresa.razaoSocial}"
+						label="Razão Social" required="true" />
+
+					<p:message for="razaoSocial"></p:message>
+				</h:panelGroup>
+
+				<p:outputLabel value="Nome fantasia: " for="nomeFantasia" />
+				<p:inputText id="nomeFantasia"
+					value="#{gestaoEmpresasBean.empresa.nomeFantasia}"
+					label="Nome Fantasia" />
+
+				<p:outputLabel value="Tipo empresa" for="tipo" />
+				<h:panelGroup>
+					<p:selectOneMenu id="tipo" required="true" label="Tipo">
+						<f:selectItem itemLabel="Selecione..." />
+						<f:selectItems value="#{gestaoEmpresasBean.tiposEmpresa}"
+							var="item" itemLabel="#{item.descricao}" itemValue="#{item}" />
+					</p:selectOneMenu>
+
+					<p:message for="tipo"></p:message>
+				</h:panelGroup>
+
+				<p:outputLabel value="CNPJ: " for="cnpj" />
+				<h:panelGroup>
+					<p:inputText id="cnpj" value="#{gestaoEmpresasBean.empresa.cnpj}"
+						label="CNPJ">
+						<f:validateLength minimum="18" maximum="18" />
+					</p:inputText>
+
+					<p:message for="cnpj"></p:message>
+				</h:panelGroup>
+
+				<p:outputLabel value="Data Fundação: " for="dataFundacao" />
+				<h:panelGroup>
+					<p:inputText id="dataFundacao"
+						value="#{gestaoEmpresasBean.empresa.dataFundacao}"
+						label="Data Fundação">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</p:inputText>
+
+					<p:message for="dataFundacao"></p:message>
+				</h:panelGroup>
+
+				<p:outputLabel value="Faturamento: " for="faturamento" />
+				<h:panelGroup>
+					<p:inputText id="faturamento"
+						value="#{gestaoEmpresasBean.empresa.faturamento}"
+						label="Faturamento">
+						<f:convertNumber pattern="#,##0.00" />
+						<f:validateDoubleRange minimum="0" />
+					</p:inputText>
+
+					<p:message for="faturamento" />
+				</h:panelGroup>
+
+				<p:outputLabel />
+				<h:panelGroup>
+					<h:commandButton value="Salvar"
+						actionListener="#{gestaoEmpresasBean.salvar}" />
+				</h:panelGroup>
+
+				<p:outputLabel />
+				<h:panelGroup>
+					<h:commandLink value="Ajuda" action="#{gestaoEmpresasBean.ajuda}" />
+				</h:panelGroup>
+
+			</h:panelGrid>
+
+			<p:dataTable value="#{[0, 0, 0, 0]}">
+				<p:column headerText="Razão Social">
+					<h:outputText value="AlgaWorks Softwares, Treinamentos LDTA" />
+				</p:column>
+
+				<p:column headerText="Nome fantasia" >
+				<h:outputText value="AlgaWorks" />
+				</p:column>
+
+				<p:column headerText="Tipo Empresa" >
+				<h:outputText value="LDTA" />
+				</p:column>
+			</p:dataTable>
+			
+		</h:form>
+	</div>
+
+	<footer> Curso online "JSF e PrimeFaces Essencial" </footer>
+</h:body>
+
+</html>
