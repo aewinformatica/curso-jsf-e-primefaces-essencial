@@ -1,12 +1,14 @@
 package com.aewinformatica.erp.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.aewinformatica.erp.model.Empresa;
-import com.aewinformatica.erp.model.TipoEmpresa;
+import com.aewinformatica.erp.repository.Empresas;
 
 @Named
 @ViewScoped
@@ -14,27 +16,20 @@ public class GestaoEmpresasBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Empresa empresa = new Empresa();
+	@Inject
+	private Empresas empresas;
 	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-
-	public TipoEmpresa[] getTiposEmpresa() {
+	private List<Empresa>listaEmpresas;
+	
+	public void todasEmpresas() {
 		
-		return TipoEmpresa.values();
+		this.listaEmpresas = empresas.todas();
 	}
+
+
+	public List<Empresa> getListaEmpresas() {
+		return listaEmpresas;
+	}
+
 	
-	public void salvar() {
-		System.out.println("SALVOU!");
-	}
-	
-	public String ajuda() {
-		//Usando Navegação Implicita sem alterar a URI
-		return "AjudaGestaoEmpresas";
-	}
 }

@@ -16,6 +16,13 @@
 	</properties>
 
 	<dependencies>
+<!-- 		Implementacao do CDI pela JBoss chamado Weld -->
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<version>2.4.0.Final</version>
+			<scope>compile</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
@@ -31,34 +38,30 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.0</version>
+			<!-- <version>4.0.0</version> -->
+			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>5.3.5.Final</version>
+			<version>5.3.2.Final</version>
 		</dependency>
 
-		<!--"CORE" já tem o hibernate-entitymanager como dependencia entao já 
-			vai baixar -->
+		<!--"CORE" já tem o hibernate-entitymanager como dependencia entao já vai 
+			baixar -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.4.Final</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.20</version>
 		</dependency>
-		<!-- Implementacao do CDI pela JBoss chamado Weld -->
-		<dependency>
-			<groupId>org.jboss.weld.servlet</groupId>
-			<artifactId>weld-servlet</artifactId>
-			<version>2.4.0.Final</version>
-			<scope>compile</scope>
-		</dependency>
+
 	</dependencies>
 
 	<build>
