@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import com.aewinformatica.erp.model.Empresa;
 import com.aewinformatica.erp.repository.Empresas;
+import com.aewinformatica.erp.util.FacesMessages;
 
 @Named
 @ViewScoped
@@ -19,12 +20,19 @@ public class GestaoEmpresasBean implements Serializable {
 	@Inject
 	private Empresas empresas;
 	
+	@Inject
+	private FacesMessages messages;
+	
 	private List<Empresa>listaEmpresas;
 	
 	private String termoPesquisa;
 	
 	public void pesquisar() {
 		listaEmpresas = empresas.pesquisar(termoPesquisa);
+		
+		if(listaEmpresas.isEmpty()) {
+			messages.info("Sua consulta nao retornou registros.");
+		}
 	}
 	public void todasEmpresas() {
 		
