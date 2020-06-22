@@ -21,6 +21,11 @@ public class GestaoEmpresasBean implements Serializable {
 	
 	private List<Empresa>listaEmpresas;
 	
+	private String termoPesquisa;
+	
+	public void pesquisar() {
+		listaEmpresas = empresas.pesquisar(termoPesquisa);
+	}
 	public void todasEmpresas() {
 		
 		this.listaEmpresas = empresas.todas();
@@ -29,6 +34,16 @@ public class GestaoEmpresasBean implements Serializable {
 
 	public List<Empresa> getListaEmpresas() {
 		return listaEmpresas;
+	}
+
+
+	public String getTermoPesquisa() {
+		return termoPesquisa;
+	}
+
+
+	public void setTermoPesquisa(String termoPesquisa) {
+		this.termoPesquisa = termoPesquisa;
 	}
 
 	
