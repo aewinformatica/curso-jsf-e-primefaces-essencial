@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.aewinformatica.erp.model.Empresa;
+import com.aewinformatica.erp.model.TipoEmpresa;
 import com.aewinformatica.erp.repository.Empresas;
 import com.aewinformatica.erp.util.FacesMessages;
 
@@ -54,5 +55,9 @@ public class GestaoEmpresasBean implements Serializable {
 		this.termoPesquisa = termoPesquisa;
 	}
 
+	public TipoEmpresa[] getTiposEmpresa() {
+		
+		return TipoEmpresa.values();
+	}
 	
 }
