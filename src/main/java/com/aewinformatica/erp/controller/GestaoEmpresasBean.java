@@ -1,12 +1,15 @@
 package com.aewinformatica.erp.controller;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.convert.Converter;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.context.RequestContext;
 
 import com.aewinformatica.erp.model.Empresa;
 import com.aewinformatica.erp.model.RamoAtividade;
@@ -53,6 +56,25 @@ public class GestaoEmpresasBean implements Serializable {
 	
 		cadastroEmpresaService.salvar(empresa);
 		
+		atualizarRegistros();
+		
+		 messages.info("Empresa salva com sucesso!");
+	        
+	        RequestContext.getCurrentInstance().update(Arrays.asList(
+	                "frm:empresasDataTable", "frm:messages"));
+		
+	}
+	
+    private boolean jaHouvePesquisa() {
+        return termoPesquisa != null && !"".equals(termoPesquisa);
+    }
+    
+	public void atualizarRegistros() {
+        if (jaHouvePesquisa()) {
+            pesquisar();
+        } else {
+            todasEmpresas();
+        }
 	}
 	public void pesquisar() {
 		listaEmpresas = empresas.pesquisar(termoPesquisa);
