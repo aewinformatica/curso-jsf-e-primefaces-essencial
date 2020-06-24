@@ -20,10 +20,10 @@
 		<p:messages autoUpdate="true"/>
 			<p:toolbar>
 				<f:facet name="left">
-					<p:inputText placeholder="Digite aqui um termo para pessquisar ..."
+					<p:inputText id="termoPesquisa" placeholder="Digite aqui um termo para pessquisar ..."
 						size="30" value="#{gestaoEmpresasBean.termoPesquisa}" />
 
-					<p:commandButton value="pesquisar" icon="fa fa-search" actionListener="#{gestaoEmpresasBean.pesquisar}" update="empresasDataTable" />
+					<p:commandButton value="pesquisar" icon="fa fa-search" actionListener="#{gestaoEmpresasBean.pesquisar}" update="empresasDataTable" process="@this termoPesquisa"/>
 
 					<span class="ui-separator"> <span
 						class="ui-icon ui-icon-grip-dotted-vertical" />
