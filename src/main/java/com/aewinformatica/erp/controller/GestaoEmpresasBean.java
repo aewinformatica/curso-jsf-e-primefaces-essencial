@@ -13,6 +13,7 @@ import com.aewinformatica.erp.model.RamoAtividade;
 import com.aewinformatica.erp.model.TipoEmpresa;
 import com.aewinformatica.erp.repository.Empresas;
 import com.aewinformatica.erp.repository.RamoAtividades;
+import com.aewinformatica.erp.service.CadastroEmpresaService;
 import com.aewinformatica.erp.util.FacesMessages;
 
 @Named
@@ -30,14 +31,29 @@ public class GestaoEmpresasBean implements Serializable {
     @Inject
     private RamoAtividades ramoAtividades;
     
+    @Inject
+    private CadastroEmpresaService cadastroEmpresaService;
+    
+    
     private Converter ramoAtividadeConverter;
 	
+
+    private Empresa empresa;
 
 
 	private List<Empresa>listaEmpresas;
 	
 	private String termoPesquisa;
 	
+	public void prepararNovaEmpresa() {
+		empresa = new Empresa();
+	}
+	
+	public void salvar() {
+	
+		cadastroEmpresaService.salvar(empresa);
+		
+	}
 	public void pesquisar() {
 		listaEmpresas = empresas.pesquisar(termoPesquisa);
 		
@@ -66,6 +82,12 @@ public class GestaoEmpresasBean implements Serializable {
 		this.ramoAtividadeConverter = ramoAtividadeConverter;
 	}
 	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
 	public List<Empresa> getListaEmpresas() {
 		return listaEmpresas;
 	}
