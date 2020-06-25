@@ -40,9 +40,9 @@
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 
-					<p:commandButton title="Editar" icon="fa fa fa-edit" />
+					<p:commandButton title="Editar" icon="fa fa fa-edit" disabled="#{not gestaoEmpresasBean.empresaSelecionada}" />
 
-					<p:commandButton title="Excluir" icon="fa fa fa-trash" />
+					<p:commandButton title="Excluir" icon="fa fa fa-trash" disabled="#{not gestaoEmpresasBean.empresaSelecionada}" />
 
 					<span class="ui-separator"> <span
 						class="ui-icon ui-icon-grip-dotted-vertical" />
