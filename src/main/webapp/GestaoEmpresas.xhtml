@@ -17,7 +17,7 @@
 		</f:metadata>
 
 		<h:form id="frm">
-		<p:messages autoUpdate="true"/>
+		<p:messages id="messages"/>
 			<p:toolbar>
 				<f:facet name="left">
 					<p:inputText id="termoPesquisa" placeholder="Digite aqui um termo para pessquisar ..."
@@ -87,7 +87,7 @@
 				<p:inputText id="razaoSocial" size="80" maxlength="120" value="#{gestaoEmpresasBean.empresa.razaoSocial}" />
 				
 				<p:outputLabel value="Nome fantasia: " for="nomeFantasia" />
-				<p:inputText id="nomeFantasia" size="80" maxlength="120" value="#{gestaoEmpresasBean.empresa.nomeFantasia}" />
+				<p:inputText id="nomeFantasia" size="80" maxlength="80" value="#{gestaoEmpresasBean.empresa.nomeFantasia}" />
 				
 				<p:outputLabel value="Tipo empresa: " for="tipo" />
 				<p:selectOneMenu id="tipo" value="#{gestaoEmpresasBean.empresa.tipo}" >
