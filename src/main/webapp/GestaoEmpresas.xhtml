@@ -18,7 +18,7 @@
 
 		<h:form id="frm">
 		<p:messages id="messages"/>
-			<p:toolbar>
+			<p:toolbar id="toolbar">
 				<f:facet name="left">
 					<p:inputText id="termoPesquisa" placeholder="Digite aqui um termo para pessquisar ..."
 						size="30" value="#{gestaoEmpresasBean.termoPesquisa}" />
@@ -59,6 +59,11 @@
 				var="empresa" emptyMessage="Nenhuma informação a ser exibida"
 				paginator="true" rows="10" paginatorPosition="bottom"
 				selectionMode="single" selection="#{gestaoEmpresasBean.empresa}" rowKey="#{empresa.id}">
+				
+			<p:ajax event="rowSelect" update="frm:toolbar" />
+			
+			<p:ajax event="rowUnselect" update="frm:toolbar" />
+			
 				<p:column headerText="Razão Social" sortBy="#{empresa.razaoSocial}">
 					<h:outputText value="#{empresa.razaoSocial}" />
 				</p:column>
