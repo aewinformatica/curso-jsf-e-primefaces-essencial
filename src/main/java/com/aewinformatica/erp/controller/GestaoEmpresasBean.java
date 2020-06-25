@@ -52,6 +52,11 @@ public class GestaoEmpresasBean implements Serializable {
 		empresa = new Empresa();
 	}
 	
+	public void prepararEdicao() {
+		//apesar de lidar somente com um registro ele precisa que o converter saiba fazer a conversao desse registro
+		ramoAtividadeConverter = new RamoAtividadeConverter(Arrays.asList(empresa.getRamoAtividade()));
+	}
+	
 	public void salvar() {
 	
 		cadastroEmpresaService.salvar(empresa);
